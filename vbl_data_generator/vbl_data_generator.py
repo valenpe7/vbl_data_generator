@@ -7,8 +7,11 @@ class vbl_data_generator:
     def __init__(self):
         pass
 
-    def calculate_particle_colors(self, array, vmin, vmax, colormap):
-        return np.float32(plt.cm.get_cmap(colormap)(mpl.colors.Normalize(vmin, vmax, clip=True)(array).data))
+    def calculate_particle_colors(self, array, vmin, vmax, colormap_name):
+        norm = mpl.colors.Normalize(vmin, vmax, clip=True)(array).data
+        cmap = plt.cm.get_cmap(colormap_name)(norm)
+        cmap[:, -1] = np.sqrt(norm) 
+        return np.float32(cmap)
     
     def calculate_volume_colors(self, array, vmin, vmax):
         return np.int8(mpl.colors.Normalize(vmin, vmax, clip=True)(array).data * 255)
