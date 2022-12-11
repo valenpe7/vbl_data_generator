@@ -13,7 +13,7 @@ setuptools.setup(
     version=__version__,
     author="Petr Valenta",
     author_email="petr.valenta@email.com",
-    description="A library that converts vtk files to binary data for VBL application",
+    description="A library that generates binary data for VBL application",
     long_description=long_description,
     long_description_content_type="text/markdown",
     install_requires=install_requires,
